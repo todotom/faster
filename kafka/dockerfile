@@ -23,10 +23,5 @@ RUN if [[ ${PREINSTALLED} = 0 ]] ; then \
     mv ${KAFKA_DIR} kafka && \
     chown -R kafka:kafka . && \
     chmod -R u+rwx . ; fi
-# RUN if [[ ${PREINSTALLED} = 0 ]] ; then \
-#     touch caca && \
-#     touch pis ; fi
 
 USER kafka
-
-# RUN 
