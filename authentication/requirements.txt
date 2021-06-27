@@ -1,50 +1,47 @@
-# packages in environment at /home/tomasdarioam/anaconda3/envs/authentication:
-#
-# Name                    Version                   Build  Channel
-_libgcc_mutex             0.1                        main  
-_openmp_mutex             4.5                       1_gnu  
-argon2_cffi               19.1.0           py38h7b6447c_0  
-bcrypt                    3.2.0            py38h7b6447c_0  
-ca-certificates           2021.5.25            h06a4308_1  
-certifi                   2021.5.30        py38h06a4308_0  
-cffi                      1.14.5           py38h261ae71_0  
-click                     8.0.1              pyhd3eb1b0_0  
-cryptography              3.4.7            py38hd23ed53_0  
-ecdsa                     0.17.0             pyhd3eb1b0_0  
-fastapi                   0.65.2             pyhd8ed1ab_0    conda-forge
-future                    0.18.2                   py38_1  
-gmp                       6.2.1                h2531618_2  
-importlib-metadata        3.10.0           py38h06a4308_0  
-ld_impl_linux-64          2.35.1               h7274673_9  
-libffi                    3.3                  he6710b0_2  
-libgcc-ng                 9.3.0               h5101ec6_17  
-libgomp                   9.3.0               h5101ec6_17  
-libstdcxx-ng              9.3.0               hd4cf53a_17  
-ncurses                   6.2                  he6710b0_1  
-openssl                   1.1.1k               h27cfd23_0  
-passlib                   1.7.4                      py_0  
-pip                       21.1.2           py38h06a4308_0  
-pycparser                 2.20                       py_2  
-pycryptodome              3.10.1           py38h3dc18e1_0  
-pydantic                  1.8.2            py38h27cfd23_0  
-python                    3.8.10               h12debd9_8  
-python-jose               3.2.0                      py_0  
-python-multipart          0.0.5                      py_0    conda-forge
-readline                  8.1                  h27cfd23_0  
-setuptools                52.0.0           py38h06a4308_0  
-six                       1.16.0             pyh6c4a22f_0    conda-forge
-sqlite                    3.35.4               hdfb4753_0  
-starlette                 0.14.2             pyhd8ed1ab_0    conda-forge
-tk                        8.6.10               hbc83047_0  
-typing-extensions         3.10.0.0             hd8ed1ab_0    conda-forge
-typing_extensions         3.10.0.0           pyha770c72_0    conda-forge
-tzdata                    2020f                h52ac0ba_0  
-wheel                     0.36.2             pyhd3eb1b0_0  
-xz                        5.2.5                h7b6447c_0  
-zipp                      3.4.1              pyhd3eb1b0_0  
-zlib                      1.2.11               h7b6447c_3  
-
-pydantic~=1.8.2
-fastapi~=0.65.2
-passlib~=1.7.4
-pyjwt~=2.1.0
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: linux-64
+@EXPLICIT
+https://repo.anaconda.com/pkgs/main/linux-64/_libgcc_mutex-0.1-main.conda
+https://conda.anaconda.org/conda-forge/linux-64/ca-certificates-2021.5.30-ha878542_0.tar.bz2
+https://repo.anaconda.com/pkgs/main/linux-64/ld_impl_linux-64-2.35.1-h7274673_9.conda
+https://repo.anaconda.com/pkgs/main/linux-64/libstdcxx-ng-9.3.0-hd4cf53a_17.conda
+https://repo.anaconda.com/pkgs/main/linux-64/libgomp-9.3.0-h5101ec6_17.conda
+https://repo.anaconda.com/pkgs/main/linux-64/_openmp_mutex-4.5-1_gnu.tar.bz2
+https://repo.anaconda.com/pkgs/main/linux-64/libgcc-ng-9.3.0-h5101ec6_17.conda
+https://repo.anaconda.com/pkgs/main/linux-64/libffi-3.3-he6710b0_2.conda
+https://repo.anaconda.com/pkgs/main/linux-64/ncurses-6.2-he6710b0_1.conda
+https://conda.anaconda.org/conda-forge/linux-64/openssl-1.1.1k-h7f98852_0.tar.bz2
+https://repo.anaconda.com/pkgs/main/linux-64/xz-5.2.5-h7b6447c_0.conda
+https://repo.anaconda.com/pkgs/main/linux-64/zlib-1.2.11-h7b6447c_3.conda
+https://repo.anaconda.com/pkgs/main/linux-64/readline-8.1-h27cfd23_0.conda
+https://repo.anaconda.com/pkgs/main/linux-64/tk-8.6.10-hbc83047_0.conda
+https://repo.anaconda.com/pkgs/main/linux-64/sqlite-3.35.4-hdfb4753_0.conda
+https://repo.anaconda.com/pkgs/main/linux-64/python-3.8.10-h12debd9_8.tar.bz2
+https://conda.anaconda.org/conda-forge/noarch/h11-0.12.0-pyhd8ed1ab_0.tar.bz2
+https://repo.anaconda.com/pkgs/main/noarch/idna-3.2-pyhd3eb1b0_0.conda
+https://conda.anaconda.org/conda-forge/noarch/kafka-python-2.0.2-pyh9f0ad1d_0.tar.bz2
+https://repo.anaconda.com/pkgs/main/noarch/pycparser-2.20-py_2.conda
+https://conda.anaconda.org/conda-forge/linux-64/python_abi-3.8-2_cp38.tar.bz2
+https://repo.anaconda.com/pkgs/main/linux-64/six-1.15.0-py38h06a4308_0.conda
+https://conda.anaconda.org/conda-forge/noarch/starlette-0.14.2-pyhd8ed1ab_0.tar.bz2
+https://repo.anaconda.com/pkgs/main/noarch/typing_extensions-3.7.4.3-pyh06a4308_0.conda
+https://repo.anaconda.com/pkgs/main/noarch/wheel-0.36.2-pyhd3eb1b0_0.conda
+https://repo.anaconda.com/pkgs/main/noarch/zipp-3.4.1-pyhd3eb1b0_0.conda
+https://conda.anaconda.org/conda-forge/noarch/asgiref-3.3.4-pyhd8ed1ab_0.tar.bz2
+https://conda.anaconda.org/conda-forge/linux-64/certifi-2021.5.30-py38h578d9bd_0.tar.bz2
+https://repo.anaconda.com/pkgs/main/linux-64/cffi-1.14.5-py38h261ae71_0.conda
+https://repo.anaconda.com/pkgs/main/linux-64/importlib-metadata-3.10.0-py38h06a4308_0.conda
+https://conda.anaconda.org/conda-forge/noarch/python-multipart-0.0.5-py_0.tar.bz2
+https://repo.anaconda.com/pkgs/main/noarch/typing-extensions-3.7.4.3-hd3eb1b0_0.conda
+https://repo.anaconda.com/pkgs/main/linux-64/argon2_cffi-19.1.0-py38h7b6447c_0.conda
+https://repo.anaconda.com/pkgs/main/noarch/click-8.0.1-pyhd3eb1b0_0.conda
+https://repo.anaconda.com/pkgs/main/linux-64/cryptography-2.9.2-py38h1ba5d50_0.conda
+https://repo.anaconda.com/pkgs/main/linux-64/pydantic-1.8.2-py38h27cfd23_0.conda
+https://repo.anaconda.com/pkgs/main/linux-64/setuptools-52.0.0-py38h06a4308_0.conda
+https://conda.anaconda.org/conda-forge/noarch/fastapi-0.65.2-pyhd8ed1ab_0.tar.bz2
+https://repo.anaconda.com/pkgs/main/linux-64/pip-21.1.2-py38h06a4308_0.conda
+https://repo.anaconda.com/pkgs/main/linux-64/pyjwt-2.1.0-py38h06a4308_0.conda
+https://conda.anaconda.org/conda-forge/linux-64/uvicorn-0.14.0-py38h578d9bd_0.tar.bz2
+https://repo.anaconda.com/pkgs/main/linux-64/bcrypt-3.2.0-py38h7b6447c_0.conda
+https://repo.anaconda.com/pkgs/main/noarch/passlib-1.7.4-py_0.conda

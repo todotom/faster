@@ -1,0 +1,84 @@
+FROM ubuntu:20.04
+
+ARG PASSWD
+
+ENV HOME=/home/kafka
+
+ENV KAFKA_URL=https://apache.mediamirrors.org/kafka/2.8.0/kafka_2.13-2.8.0.tgz
+ENV KAFKA_LABEL=kafka_2.13-2.8.0
+
+
+WORKDIR ${HOME}
+
+RUN adduser --quiet kafka && \
+    echo "kafka:${PASSWD}" | chpasswd -m && \
+    chmod -R u+rwx . && \
+    apt-get update && \
+    # wget
+    apt-get install -y wget && \
+    wget ${KAFKA_URL} && \
+    apt-get remove -y wget && \
+    # setup kafka dir
+    tar -xzf ${KAFKA_LABEL}.tgz && \
+    rm ${KAFKA_LABEL}.tgz && \
+    mv ${KAFKA_LABEL} kafka && \
+    chown -R kafka:kafka . && \
+    chmod -R u+rwx . && \
+    # openjdk11
+    apt-get install -y openjdk-11-jdk-headless
+
+# USER kafka
+
+WORKDIR ${HOME}/kafka
+
+ADD --chown=kafka:kafka config/server.properties /home/kafka/kafka/config
+
+ADD --chown=kafka:kafka start.sh /home/kafka/kafka/start.sh
+
+CMD ["bash", "start.sh"]
+    # echo "loooooooooooooooooooooooooooooooooooooooooooooooooooooool" && \
+    # bin/kafka-server-start.sh config/server.properties
+
+# FROM alpine:3.14.0
+
+# ARG PASSWD
+
+# RUN adduser -g "kafka" -HD kafka && \
+#     echo "kafka:${PASSWD}" | chpasswd -m 
+#     # && \
+#     # adduser <username> wheel
+#     # apk add doas
+#     # apk add nano
+#     # nano /etc/doas.conf
+
+    
+
+# ENV HOME=/home/kafka
+
+# ENV KAFKA_URL=https://archive.apache.org/dist/kafka/2.7.0/kafka-2.7.0-src.tgz
+# ENV KAFKA_DIR=kafka-2.7.0-src
+# ENV KAFKA_BIN $HOME/kafka/bin
+
+# WORKDIR ${HOME}
+
+
+# # If you don't modify this RUN, it's not going to be runned in the next build
+# RUN apk --no-cache add wget && \
+#     # OpenJDK11
+#     # apk --no-cache add openjdk11 \
+#     apk --no-cache add openjdk11 \
+#     --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community && \
+#     # Kafka
+#     wget ${KAFKA_URL} && \
+#     tar -xzf ${KAFKA_DIR}.tgz && \
+#     rm ${KAFKA_DIR}.tgz && \
+#     mv ${KAFKA_DIR} kafka && \
+#     chown -R kafka:kafka . && \
+#     chmod -R u+rwx . && \
+#     export PATH="$PATH:${KAFKA_BIN}"
+
+# USER kafka
+
+# WORKDIR ${KAFKA_BIN}
+
+# USER root

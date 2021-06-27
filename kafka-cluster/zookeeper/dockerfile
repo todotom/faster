@@ -1,0 +1,85 @@
+FROM ubuntu:20.04
+
+ARG PASSWD
+
+ENV HOME=/home/zookeeper
+
+ENV ZOOKEEPER_URL=https://apache.mediamirrors.org/zookeeper/zookeeper-3.7.0/apache-zookeeper-3.7.0-bin.tar.gz
+ENV ZOOKEEPER_LABEL=apache-zookeeper-3.7.0-bin
+
+WORKDIR ${HOME}
+
+RUN adduser --quiet zookeeper && \
+    echo "zookeeper:${PASSWD}" | chpasswd -m && \
+    chmod -R u+rwx . && \
+    apt-get update && \
+    # wget
+    apt-get install -y wget && \
+    wget ${ZOOKEEPER_URL} && \
+    apt-get remove -y wget && \
+    # setup zookeeper dir
+    tar -xzf ${ZOOKEEPER_LABEL}.tar.gz && \
+    rm ${ZOOKEEPER_LABEL}.tar.gz && \
+    mv ${ZOOKEEPER_LABEL} zookeeper && \
+    chown -R zookeeper:zookeeper . && \
+    chmod -R u+rwx . && \
+    # openjdk11
+    apt-get install -y openjdk-11-jdk-headless && \
+    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+
+ADD --chown=zookeeper:zookeeper conf/zoo.cfg /home/zookeeper/zookeeper/conf
+
+ADD --chown=zookeeper:zookeeper start.sh ${HOME}/zookeeper
+
+WORKDIR ${HOME}/zookeeper
+
+USER zookeeper
+
+CMD ["bash", "start.sh"]
+# RUN bin/zookeeper-server-start.sh config/zookeeper.properties & 
+    # echo "loooooooooooooooooooooooooooooooooooooooooooooooooooooool" && \
+    # bin/zookeeper-server-start.sh config/server.properties
+
+# FROM alpine:3.14.0
+
+# ARG PASSWD
+
+# RUN adduser -g "zookeeper" -HD zookeeper && \
+#     echo "zookeeper:${PASSWD}" | chpasswd -m 
+#     # && \
+#     # adduser <username> wheel
+#     # apk add doas
+#     # apk add nano
+#     # nano /etc/doas.conf
+
+    
+
+# ENV HOME=/home/zookeeper
+
+# ENV ZOOKEEPER_URL=https://archive.apache.org/dist/zookeeper/2.7.0/zookeeper-2.7.0-src.tgz
+# ENV ZOOKEEPER_DIR=zookeeper-2.7.0-src
+# ENV ZOOKEEPER_BIN $HOME/zookeeper/bin
+
+# WORKDIR ${HOME}
+
+
+# # If you don't modify this RUN, it's not going to be runned in the next build
+# RUN apk --no-cache add wget && \
+#     # OpenJDK11
+#     # apk --no-cache add openjdk11 \
+#     apk --no-cache add openjdk11 \
+#     --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community && \
+#     # Zookeeper
+#     wget ${ZOOKEEPER_URL} && \
+#     tar -xzf ${ZOOKEEPER_DIR}.tgz && \
+#     rm ${ZOOKEEPER_DIR}.tgz && \
+#     mv ${ZOOKEEPER_DIR} zookeeper && \
+#     chown -R zookeeper:zookeeper . && \
+#     chmod -R u+rwx . && \
+#     export PATH="$PATH:${ZOOKEEPER_BIN}"
+
+# USER zookeeper
+
+# WORKDIR ${ZOOKEEPER_BIN}
+
+# USER root

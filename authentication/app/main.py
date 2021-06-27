@@ -1,8 +1,10 @@
-import uvicorn
-
 from typing import (
     Union,
 )
+
+from kafka import KafkaProducer
+
+import uvicorn
 
 from fastapi import (
     Depends,
@@ -10,26 +12,21 @@ from fastapi import (
     HTTPException,
     status,
 )
-
 from fastapi.security import (
     OAuth2PasswordBearer,
     OAuth2PasswordRequestForm,
 )
 
-from passlib.context import CryptContext
-
 from adapter.fake_users_db import fake_users_db
-
-from domain.user import (
-    User,
-    UserInDB,
-    Username,
-)
-
 from domain.token import (
     Token,
     create_access_token,
     decode_access_token
+)
+from domain.user import (
+    User,
+    UserInDB,
+    Username,
 )
 
 app = FastAPI(
@@ -97,7 +94,8 @@ async def get_current_active_user(
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
     try:
         user = authenticate_user(form_data.username, form_data.password)
-    except Exception:        raise HTTPException(
+    except Exception:
+        raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Incorrect username or password",
             headers={"WWW-Authenticate": "Bearer"},
@@ -113,5 +111,16 @@ async def read_users_me(
     return current_user
 
 
+@app.post("/kafka")
+async def kafka_test(message: str):
+    producer = KafkaProducer(bootstrap_servers=["ubuntu-kafka:9092"])
+
+    topic = "quickstart-events"
+
+    send = producer.send(topic, message.encode(encoding="UTF-8"))
+
+    print(f"\nTOPIC:\t\t{topic}"
+          f'\nMESSAGE:\t"{message}"')
+
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=5000)

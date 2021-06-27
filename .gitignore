@@ -1,10 +1,16 @@
 
-authentication/venv/
+**/__pycache__
+**/venv
+**/.idea
 
-authentication/adapter/__pycache__/
+# authentication/adapter/__pycache__/
 
-authentication/app/__pycache__/
+# authentication/app/__pycache__/
 
-authentication/domain/__pycache__/
+# authentication/domain/__pycache__/
 
-authentication/.idea/
+# authentication/.idea/
+
+# authentication/venv/
+
+isolate/

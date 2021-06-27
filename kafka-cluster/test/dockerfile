@@ -1,0 +1,41 @@
+FROM continuumio/miniconda3
+
+
+WORKDIR /app
+
+#This extra stage avoids running again the next stage every change in source code
+ADD requirements.txt /app
+
+RUN conda config --add channels conda-forge && \
+    conda update -n base -c defaults conda && \
+    conda create --name test --file requirements.txt && \
+    conda install --file requirements.txt
+
+
+COPY . /app
+
+CMD ["python", "main.py"]
+
+
+# CMD ["source", "activate", "authentication"]
+
+# RUN conda config --add channels conda-forge && \
+#     conda update -n base -c defaults conda
+
+# RUN conda update conda && \
+# RUN conda config --add channels conda-forge && \
+#     conda install --file requirements.txt
+
+
+
+# RUN apt-get update \
+#     && apt-get -yy install libmariadb-dev
+
+# RUN mkdir -p /usr/src/app
+# WORKDIR /usr/src/app
+
+# COPY requirements.txt /usr/src/app
+# RUN pip install -r requirements.txt
+
+# ENTRYPOINT [ "flask" ]
+# CMD ["run", "--host=0.0.0.0", "--port=5000"]
