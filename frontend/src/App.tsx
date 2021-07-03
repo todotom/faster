@@ -1,11 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
 import LoginWrapper from './containers/LoginWrapper';
+import styled from 'styled-components';
 
+const StyledApp = styled.div`
+  width: 100vh;
+  height: 100vh;
+  color: white;
+  background-color: #2d2b4b;
+
+  * {
+    background-color: #2d2b4b;
+    color: white;
+  }
+`;
 
 function App() {
   return (
-    <LoginWrapper />
+    <StyledApp id="root" className="root">
+      <LoginWrapper />
+    </StyledApp>
   );
 }
 

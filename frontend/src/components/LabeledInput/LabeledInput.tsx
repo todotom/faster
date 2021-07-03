@@ -1,4 +1,5 @@
-import './LabeledInput.css'
+import styled from 'styled-components'
+
 
 export enum InputType {
     USERNAME,
@@ -6,9 +7,41 @@ export enum InputType {
     EMAIL
 }
 
+
 type Props = {
     inputType: InputType;
+    upperGap?: number;
 }
+
+
+export default function LabeledInput(props : Props) {
+    const StyledInput = styled.input`
+        //
+        margin-left: 1em;
+        margin-top: ${props.upperGap ? props.upperGap : 0}em;
+        padding: 0.5em;
+        width: 10em;
+        border-radius: 0.5em;
+        border: 10px solid ${getColor(props.inputType)}
+    `;
+
+    const StyledLabel = styled.label`
+        display: block;
+    `;
+
+    return (
+        <StyledLabel>
+            Username:            
+            <StyledInput 
+                type={getType(props.inputType)} 
+                id={getId(props.inputType)}
+                name={getName(props.inputType)}
+                className={getId(props.inputType)}
+            />
+        </StyledLabel>
+    );
+}
+
 
 const getType = (inputType : InputType) => {
     let type : string;
@@ -64,24 +97,20 @@ const getName = (inputType : InputType) => {
     return inputName;
 }
 
+const getColor = (inputType : InputType) => {
+    let color : string;
 
+    switch(inputType) {
+        case InputType.EMAIL:
+            color = "#ffb656";
+            break;
+        case InputType.USERNAME:
+            color = "#ff0000";
+            break;
+        case InputType.PASSWORD:
+            color = "#0051ff";
+            break;
+    }
 
-
-export default function LabeledInput(props : Props) {
-    return (
-        <>
-            <label>
-                Username:            
-                <input 
-                    type={getType(props.inputType)} 
-                    id={getId(props.inputType)}
-                    name={getName(props.inputType)}
-                    className={getId(props.inputType)}
-                />
-            </label>
-        </>
-    );
+    return color;
 }
-
-
-//export default const Input2 = styled.
