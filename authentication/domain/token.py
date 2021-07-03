@@ -6,6 +6,7 @@ from domain.base_model import BaseModel
 
 from domain.user import Username, User
 
+
 from jwt import (
     encode,
     decode,

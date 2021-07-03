@@ -110,6 +110,17 @@ async def read_users_me(
 ):
     return current_user
 
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
 
 @app.post("/kafka")
 async def kafka_test(message: str):
@@ -117,10 +128,10 @@ async def kafka_test(message: str):
 
     topic = "quickstart-events"
 
-    send = producer.send(topic, message.encode(encoding="UTF-8"))
+    producer.send(topic, message.encode(encoding="UTF-8"))
 
-    print(f"\nTOPIC:\t\t{topic}"
-          f'\nMESSAGE:\t"{message}"')
+    print(f"\n{bcolors.OKGREEN}{topic}{bcolors.ENDC}"
+          f"\n{bcolors.OKCYAN}{message}{bcolors.ENDC}\n")
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=5000)

@@ -6,11 +6,12 @@ WORKDIR /app
 #This extra stage avoids running again the next stage every change in source code
 ADD requirements.txt /app
 
+RUN apt-get update
+
 RUN conda config --add channels conda-forge && \
     conda update -n base -c defaults conda && \
     conda create --name test --file requirements.txt && \
     conda install --file requirements.txt
-
 
 COPY . /app
 
