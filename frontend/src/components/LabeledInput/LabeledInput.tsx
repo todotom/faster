@@ -15,35 +15,51 @@ type Props = {
 
 
 export default function LabeledInput(props : Props) {
-    const StyledInput = styled.input`
-        //
-        margin-left: 1em;
-        margin-top: ${props.upperGap ? props.upperGap : 0}em;
-        padding: 0.5em;
-        width: 10em;
-        border-radius: 0.5em;
-        border: 10px solid ${getColor(props.inputType)}
+    
+    const StyledLabel = styled.label`
+        width: fit-content;
+        padding: .5em 1em 1em;
+        border: .1em dashed ${getColor(props.inputType)};
     `;
 
-    const StyledLabel = styled.label`
-        display: block;
+
+    const StyledInput = styled.input`
+        margin-top:0.2em;
+        font-size: large;
+        padding: 0.5em;
+        border: 0.1em dotted white;
+        outline: none;
+        :focus {
+            border: 0.1em solid ${getColor(props.inputType)};
+        }
+
+        ::selection {
+            background: white;
+            color: black;
+        }
+
+        ::-moz-selection {
+            background: white;
+            color: black;
+        }
     `;
+    
 
     return (
         <StyledLabel>
-            Username:            
+            {getLabel(props.inputType)}:
+            <br/>            
             <StyledInput 
                 type={getType(props.inputType)} 
                 id={getId(props.inputType)}
                 name={getName(props.inputType)}
-                className={getId(props.inputType)}
             />
         </StyledLabel>
     );
 }
 
 
-const getType = (inputType : InputType) => {
+const getType = (inputType : InputType) : string => {
     let type : string;
 
     switch(inputType) {
@@ -61,7 +77,7 @@ const getType = (inputType : InputType) => {
     return type;
 }
 
-const getId = (inputType : InputType) => {
+const getId = (inputType : InputType) : string => {
     let id : string;
 
     switch(inputType) {
@@ -79,7 +95,7 @@ const getId = (inputType : InputType) => {
     return id;
 }
 
-const getName = (inputType : InputType) => {
+const getName = (inputType : InputType) : string => {
     let inputName : string;
 
     switch(inputType) {
@@ -97,20 +113,39 @@ const getName = (inputType : InputType) => {
     return inputName;
 }
 
-const getColor = (inputType : InputType) => {
+const getColor = (inputType : InputType) : string => {
     let color : string;
 
     switch(inputType) {
         case InputType.EMAIL:
-            color = "#ffb656";
+            color = "#ffce8f";
             break;
         case InputType.USERNAME:
-            color = "#ff0000";
+            color = "#ff3d3d";
             break;
         case InputType.PASSWORD:
-            color = "#0051ff";
+            color = "#5cffe4";
             break;
     }
 
     return color;
+}
+
+
+const getLabel = (inputType : InputType) : string => {
+    let label : string;
+
+    switch(inputType) {
+        case InputType.EMAIL:
+            label = "Email"
+            break;
+        case InputType.USERNAME:
+            label = "Username";
+            break;
+        case InputType.PASSWORD:
+            label = "Password";
+            break;
+    }
+
+    return label;
 }

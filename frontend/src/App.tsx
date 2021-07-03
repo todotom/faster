@@ -1,25 +1,27 @@
-import React from 'react';
-import LoginWrapper from './containers/LoginWrapper';
+import Login from './components/LabeledInput/Login/Login';
 import styled from 'styled-components';
 
-const StyledApp = styled.div`
-  width: 100vh;
+const Root = styled.div`
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
   height: 100vh;
   color: white;
-  background-color: #2d2b4b;
+  background-color: #1a182b;
 
   * {
-    background-color: #2d2b4b;
+    background-color: #1a182b;
     color: white;
   }
+
 `;
 
-function App() {
+export default function App() {
   return (
-    <StyledApp id="root" className="root">
-      <LoginWrapper />
-    </StyledApp>
+    <Root>
+      <Login />
+    </Root>
   );
 }
 
-export default App;
