@@ -1,5 +1,8 @@
-import Login from './components/LabeledInput/Login/Login';
+import LoginWrapper from './components/LabeledInput/Login/Login';
 import styled from 'styled-components';
+import Navbar from './components/Navbar/Navbar';
+import Main from './components/Main/Main';
+
 
 const Root = styled.div`
   display: grid;
@@ -7,21 +10,20 @@ const Root = styled.div`
   justify-content: center;
   width: 100%;
   height: 100vh;
-  color: white;
-  background-color: #1a182b;
+  background: linear-gradient(.25turn, #797979, #303030);
 
   * {
-    background-color: #1a182b;
-    color: white;
+    background-color: linear-gradient(45deg, rgb(20, 20, 20), rgb(45, 45, 45), rgb(10, 10, 10));
   }
 
 `;
 
 export default function App() {
   return (
-    <Root>
-      <Login />
-    </Root>
+    <>
+      <Navbar />
+      <Main />
+    </>
   );
 }
 

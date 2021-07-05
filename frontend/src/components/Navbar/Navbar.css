@@ -1,0 +1,22 @@
+a {
+    color: white;
+    padding: 1.9em 2em;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+a:hover {
+    background: #00557c;
+    transition: all 0.3s ease-out;
+}
+
+.yolo {
+    background: rgb(255, 174, 0);
+    color: black;
+}
+
+.yolo:hover {
+    background: rgb(26, 23, 23);
+    color: white;
+}

@@ -1,5 +1,4 @@
-import styled from 'styled-components'
-
+import styled from "styled-components";
 
 export enum InputType {
     USERNAME,
@@ -18,16 +17,17 @@ export default function LabeledInput(props : Props) {
     
     const StyledLabel = styled.label`
         width: fit-content;
-        padding: .5em 1em 1em;
-        border: .1em dashed ${getColor(props.inputType)};
+        padding: 0em 1em 1em;
+        color: white;
     `;
 
 
     const StyledInput = styled.input`
-        margin-top:0.2em;
+        margin-top: .5em;
         font-size: large;
-        padding: 0.5em;
-        border: 0.1em dotted white;
+        padding: .5em;
+        border: .1em solid white;
+        border-radius: .5em;
         outline: none;
         :focus {
             border: 0.1em solid ${getColor(props.inputType)};
@@ -43,7 +43,6 @@ export default function LabeledInput(props : Props) {
             color: black;
         }
     `;
-    
 
     return (
         <StyledLabel>
