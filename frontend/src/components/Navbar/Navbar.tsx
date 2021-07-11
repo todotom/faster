@@ -50,7 +50,7 @@ export default function Navbar() {
         <NavbarWrapper>
             <NavLogo>Faster</NavLogo><LogoImage src={logo} alt="Faster's logo" />
             <NavMenu>
-                <Link className="nav-link">
+                <Link className="nav-link" to='/'>
                     <NavItem>
                             Home
                     </NavItem>
@@ -75,7 +75,7 @@ export default function Navbar() {
                             Account
                     </NavItem>
                 </Link>
-                <Link className="yolo">
+                <Link className="yolo" to='/login'>
                     <NavItem>
                             Login
                     </NavItem>

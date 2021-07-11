@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import LoginWrapper from './components/Login/LoginWrapper';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Switch, Link, Route } from 'react-router-dom';
+import Navbar from './components/Navbar/Navbar';
+import Home from './pages/Home';
 // import Main from './components/Main/Main';
 // import Navbar from './components/Navbar/Navbar';
 
@@ -22,9 +24,17 @@ export default function App() {
   return (
     <>
       <BrowserRouter>
-        <Root>
-          <LoginWrapper />
-        </Root>
+          <Navbar/>
+          <Root>
+            <Switch>
+              <Route path='/login'>
+                <LoginWrapper/>
+              </Route>
+              <Route path='/'>
+                <Home/>
+              </Route>
+            </Switch>
+          </Root>
       </BrowserRouter>
     </>
   );

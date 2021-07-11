@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import LabeledInput, { InputType } from '../LabeledInput/LabeledInput';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Home from '../../Home';
+import Home from '../../pages/Home';
 
 
 
@@ -36,19 +35,12 @@ const Button = styled.a`
 
 export default function LoginWrapper() {
     return (
-        <Router>
-            <Container>
-                <Title>Sign in</Title>
-                <LabeledInput inputType={InputType.USERNAME}/>
-                <LabeledInput inputType={InputType.PASSWORD}/>
-                <LabeledInput inputType={InputType.EMAIL}/>
-                <Link to="/Home"><Button>Join</Button></Link>
-            </Container>
-            <Switch>
-                <Route path="/Home">
-                    <Home />
-                </Route>
-            </Switch>
-        </Router>
+        <Container>
+            <Title>Sign in</Title>
+            <LabeledInput inputType={InputType.USERNAME}/>
+            <LabeledInput inputType={InputType.PASSWORD}/>
+            <LabeledInput inputType={InputType.EMAIL}/>
+            <Button>Join</Button>
+        </Container>
     ) 
 }
