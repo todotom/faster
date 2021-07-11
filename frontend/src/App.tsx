@@ -1,8 +1,8 @@
-import LoginWrapper from './components/LabeledInput/Login/Login';
 import styled from 'styled-components';
-import Navbar from './components/Navbar/Navbar';
-import Main from './components/Main/Main';
-
+import LoginWrapper from './components/Login/LoginWrapper';
+import { BrowserRouter } from 'react-router-dom';
+// import Main from './components/Main/Main';
+// import Navbar from './components/Navbar/Navbar';
 
 const Root = styled.div`
   display: grid;
@@ -21,8 +21,11 @@ const Root = styled.div`
 export default function App() {
   return (
     <>
-      <Navbar />
-      <Main />
+      <BrowserRouter>
+        <Root>
+          <LoginWrapper />
+        </Root>
+      </BrowserRouter>
     </>
   );
 }

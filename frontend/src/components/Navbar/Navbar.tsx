@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import logo from '../LabeledInput/Login/logo.svg';
+import logo from '../Login/logo.svg';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const LogoImage = styled.img`
@@ -47,38 +48,38 @@ const NavItem = styled.li`
 export default function Navbar() {
     return(
         <NavbarWrapper>
-                <NavLogo>Faster</NavLogo><LogoImage src={logo} alt="Faster's logo" />
+            <NavLogo>Faster</NavLogo><LogoImage src={logo} alt="Faster's logo" />
             <NavMenu>
-                <a href="/">
+                <Link className="nav-link">
                     <NavItem>
                             Home
                     </NavItem>
-                </a>
-                <a href="/">
+                </Link>
+                <Link className="nav-link">
                     <NavItem>
                             Services
                     </NavItem>
-                </a>
-                <a href="/">
+                </Link>
+                <Link className="nav-link">
                     <NavItem>
                             Contact
                     </NavItem>
-                </a>
-                <a href="/">
+                </Link>
+                <Link className="nav-link">
                     <NavItem>
                             About Us
                     </NavItem>
-                </a>
-                <a href="/">
+                </Link>
+                <Link className="nav-link">
                     <NavItem>
                             Account
                     </NavItem>
-                </a>
-                <a href="/" className="yolo">
+                </Link>
+                <Link className="yolo">
                     <NavItem>
                             Login
                     </NavItem>
-                </a>
+                </Link>
             </NavMenu>
         </NavbarWrapper>
     );
