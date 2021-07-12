@@ -23,7 +23,10 @@ services:
       - 2081:2081
   ubuntu-kafka:
     build: ./kafka-cluster/kafka/
-    restart: always
+    restart: on-failure:5
+    # restart_policy:
+    #   condition: on-failure
+    #   delay: 5s
     depends_on:
       - ubuntu-zookeeper
     links:
@@ -46,6 +49,13 @@ services:
       - ubuntu-kafka
     links:
       - ubuntu-kafka:ubuntu-kafka
+  redis:
+    build: ./redis
+    restart: always
+    # depends_on:
+    #   - ubuntu-kafka
+    # links:
+    #   - ubuntu-kafka:ubuntu-kafka
     
 #volumes:
 #  postgres-data:

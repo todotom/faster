@@ -6,12 +6,18 @@ from kafka import KafkaProducer
 
 import uvicorn
 
+
 from fastapi import (
     Depends,
     FastAPI,
     HTTPException,
     status,
 )
+
+
+from fastapi.middleware.cors import CORSMiddleware
+
+
 from fastapi.security import (
     OAuth2PasswordBearer,
     OAuth2PasswordRequestForm,
@@ -33,6 +39,19 @@ app = FastAPI(
     title="faster_authentication",
     description="Simple authentication service in FastAPI",
     version="0.0.1"
+)
+
+origins = [
+    "http://localhost",
+    "http://localhost:5000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
@@ -104,6 +123,11 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     return create_access_token(user.username)
 
 
+# @app.options("/token")
+# async def get_options_for_token():
+#     pass
+
+
 @app.get("/users/me", response_model=User)
 async def read_users_me(
         current_user: User = Depends(get_current_active_user)
@@ -134,4 +158,4 @@ async def kafka_test(message: str):
           f"\n{bcolors.OKCYAN}{message}{bcolors.ENDC}\n")
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=5000)
+    uvicorn.run(app, host="0.0.0.0", port=5001)
